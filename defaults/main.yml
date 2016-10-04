@@ -1,6 +1,6 @@
 ---
 # sudo_defaults:
-#  - defaults: env_reset
+#  - defaults: "# %wheel	ALL=(ALL) NOPASSWD: ALL"
 #  - name: user1
 #    defaults: requiretty
 # sudo_users:
@@ -13,7 +13,12 @@
 
 # package name (version)
 sudo_package: sudo
+
 # list of username or %groupname
 sudo_users: []
+
 # list of username or %groupname and their defaults
-sudo_defaults: []
+sudo_defaults: 
+  - name: ansible
+    defaults: "# %wheel	ALL=(ALL) NOPASSWD: ALL"
+

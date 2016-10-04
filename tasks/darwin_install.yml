@@ -1,0 +1,10 @@
+---
+# roles/sudo/tasks/darwin_install.yml
+
+# not required for OSX
+#- name: Installing package
+#  action: "{{ ansible_pkg_mgr }} pkg={{ sudo_package }} state=present"
+
+
+
+

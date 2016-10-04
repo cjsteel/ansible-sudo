@@ -1,0 +1,26 @@
+---
+# roles/sudo/tasks/darwin.yml
+
+- name: Install custom Ansible local facts
+  copy:
+    src: 'etc/ansible/facts.d/'
+    dest: '/etc/ansible/facts.d/'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+  when: ansible_distribution != 'MacOSX'
+
+- include: darwin_install.yml
+  tags:
+    - system
+    - sudo
+    - install
+    - sudo-install
+
+- include: darwin_config.yml
+  tags:
+    - system
+    - sudo
+    - config
+    - sudo-config
+

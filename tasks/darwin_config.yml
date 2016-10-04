@@ -1,7 +1,5 @@
 ---
-
-# Fully quoted because of the ': ' on the line. See the Gotchas in the YAML docs.
-#- lineinfile: "dest=/etc/sudoers state=present regexp='^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
+# roles/sudo/tasks/darwin_config.yml
 
 - name: "ensure we tell sudo about sudoers.d (important on OSX)"
   lineinfile:
@@ -12,12 +10,11 @@
 
 - name: "ensure for the /etc/sudoers.d directory on our target (important for OS X)"
   file:
-    path: "/etc/sudoers.d'
-    state {{ sudoers.d_state }}
-    user "{{ sudoers.d_user }}"
-    group "{{ sudoers.d_group }}"
-    mode: "{{ sudoers.d_mode }}"
-
+    path: '/etc/sudoers.d'
+    state: present
+    user: root
+    group: wheel
+    mode: 0755
 
 - name: Creating sudoers configuration under /etc/sudoers.d
   template:
